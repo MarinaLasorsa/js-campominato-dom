@@ -10,6 +10,11 @@ Aggiungere una select accanto al bottone di generazione,
 che fornisca una scelta tra tre diversi livelli di difficoltà*/
 
 
+/*ESERCIZIO:
+Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+ATTENZIONE: nell’array delle bombe non potranno esserci due numeri uguali.*/
+
+
 //Recuperare elemento bottone play
 const buttonPlayElement = document.querySelector(".button-play");
 //console.log(buttonPlayElement);
@@ -17,6 +22,9 @@ const buttonPlayElement = document.querySelector(".button-play");
 //Recuperare elemento select
 const selectTagElement = document.getElementById("difficulty")
 //console.log(selectTagElement);
+
+//creare array vuoto bombe
+let bombsArray = [];
 
 //Aggiungere un event listener al click del bottone
 
@@ -42,8 +50,15 @@ buttonPlayElement.addEventListener("click", function(){
         createGrid(7);
     }
 
+
 })
 
+
+//
+//
+//FUNCTIONS
+//
+//
 
 //inserire tutto ciò che avevo in event listener per il bottone play in una funzione
 //funzione ha in ingresso la variabile lato
@@ -64,6 +79,10 @@ function createGrid(gridSide) {
     //Calcolare variabile numero di celle facendo lato x lato
     let cellsNumber = gridSide * gridSide;
     //console.log(cellsNumber);
+
+    //creare array bombe evocando la funzione con numero celle in ingresso
+    createBombs(cellsNumber);
+    console.log(bombsArray);
 
     //Aprire ciclo for che passa il numero delle celle
     for (let i = 0; i < cellsNumber; i++) {
@@ -89,39 +108,56 @@ function createGrid(gridSide) {
 
         divCellElement.addEventListener("click", function(){
 
-            //aggiungi classe bg-dark a elemento cella 
-            //(toggle per aggiungerlo e toglierlo al click)
-            divCellElement.classList.toggle("bg-dark");
-
+            //in eventlistener del cell element:
+            
             console.log(num);
+            //SE num è incluso in array bombe, 
+            if (bombsArray.includes(num) === true) {
 
+                //allora aggiungi classe bg-red,
+                divCellElement.classList.add("bg-red");
+            }
+
+            //ALTRIMENTI aggiungo la classe bg-dark
+            else {
+
+                //aggiungi classe bg-dark a elemento cella 
+                //(toggle per aggiungerlo e toglierlo al click)
+                divCellElement.classList.toggle("bg-dark");
+            }
+            
         })
     }
 }
 
 
-/*ESERCIZIO:
-Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-ATTENZIONE: nell’array delle bombe non potranno esserci due numeri uguali.*/
 
-//creare array vuoto bombe
+//fare funzione per creare array bombe con numero celle in ingresso
+function createBombs (cellNumber) {
 
-//fare funzione con numero celle in ingresso
-//finché array è < 16, generare numero casuale tra 1 e (numero celle). 
-//SE numero non è incluso in array bombe, allora lo pusho nell'array.
+    //finché array è < 16, generare numero casuale tra 1 e (numero celle). 
+    while (bombsArray.length < 16) {
+        let randomNumber = getRandomIntInclusive(1, cellNumber)
 
-/*ESERCIZIO:
-In seguito l’utente clicca su una cella:
-se il numero è presente nella lista dei numeri generati,
-la cella si colora di rosso.
-Altrimenti la cella cliccata si colora di azzurro 
-e l’utente può continuare a cliccare sulle altre celle.*/
+        //SE numero non è incluso in array bombe, allora lo pusho nell'array.
+        if (bombsArray.includes(randomNumber) === false) {
+            bombsArray.push(randomNumber)
+        }
+    }
+}
 
-//in eventlistener del cell element:
+//fare funzione per generare numero casuale tra 1 e il numero delle celle 
+//che includa il primo e l'ultimo numero
+function getRandomIntInclusive(min, max) {
+	const minCeiled = Math.ceil(min)
+	const maxFloored = Math.floor(max)
+	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled)
+}
 
-//SE num è incluso in array bombe, allora aggiungi classe bg-red (da fare in CSS),
 
-//ALTRIMENTI aggiungo la classe bg-dark
+
+
+
 
 /*ESERCIZIO:
 La partita termina quando il giocatore clicca su una bomba 
