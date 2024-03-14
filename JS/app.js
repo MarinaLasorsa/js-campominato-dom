@@ -23,8 +23,6 @@ const buttonPlayElement = document.querySelector(".button-play");
 const selectTagElement = document.getElementById("difficulty")
 //console.log(selectTagElement);
 
-//creare array vuoto bombe
-let bombsArray = [];
 
 //Aggiungere un event listener al click del bottone
 
@@ -49,7 +47,6 @@ buttonPlayElement.addEventListener("click", function(){
     else {
         createGrid(7);
     }
-
 
 })
 
@@ -81,8 +78,8 @@ function createGrid(gridSide) {
     //console.log(cellsNumber);
 
     //creare array bombe evocando la funzione con numero celle in ingresso
-    createBombs(cellsNumber);
-    console.log(bombsArray);
+    let bombsArray = createBombs(cellsNumber)
+    //console.log(bombsArray);
 
     //Aprire ciclo for che passa il numero delle celle
     for (let i = 0; i < cellsNumber; i++) {
@@ -128,12 +125,16 @@ function createGrid(gridSide) {
             
         })
     }
+
 }
 
 
 
 //fare funzione per creare array bombe con numero celle in ingresso
 function createBombs (cellNumber) {
+
+    //creare array vuoto bombe
+    let bombsArray = [];    
 
     //finché array è < 16, generare numero casuale tra 1 e (numero celle). 
     while (bombsArray.length < 16) {
@@ -144,6 +145,8 @@ function createBombs (cellNumber) {
             bombsArray.push(randomNumber)
         }
     }
+
+    return bombsArray;
 }
 
 //fare funzione per generare numero casuale tra 1 e il numero delle celle 
