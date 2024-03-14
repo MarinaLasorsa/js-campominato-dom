@@ -102,7 +102,42 @@ function createGrid(gridSide) {
 
 /*ESERCIZIO:
 Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-ATTENZIONE: nell’array delle bombe non potranno esserci due numeri uguali.
+ATTENZIONE: nell’array delle bombe non potranno esserci due numeri uguali.*/
+
+//creare array vuoto bombe
+
+//fare funzione con numero celle in ingresso
+//finché array è < 16, generare numero casuale tra 1 e (numero celle). 
+//SE numero non è incluso in array bombe, allora lo pusho nell'array.
+
+/*ESERCIZIO:
+In seguito l’utente clicca su una cella:
+se il numero è presente nella lista dei numeri generati,
+la cella si colora di rosso.
+Altrimenti la cella cliccata si colora di azzurro 
+e l’utente può continuare a cliccare sulle altre celle.*/
+
+//in eventlistener del cell element:
+
+//SE num è incluso in array bombe, allora aggiungi classe bg-red (da fare in CSS),
+
+//ALTRIMENTI aggiungo la classe bg-dark
+
+/*ESERCIZIO:
+La partita termina quando il giocatore clicca su una bomba 
+o quando raggiunge il numero massimo possibile di numeri consentiti 
+(ovvero quando ha rivelato tutte le celle che non sono bombe).
+Al termine della partita il software deve comunicare il punteggio, 
+cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
+
+//creare sezione in HTML dove inserire risultato e punteggio
+
+//dichiaro variabile punteggio selezionando tutti elementi con classe bg-dark e trovando la length
+
+//SE num è incluso in array bombe, (oltre a dare classe bg)
+//metto anche in innerHTML della nuova sezione "Hai perso, il tuo punteggio è (variabile punteggio)"
+
+
 
 
 
