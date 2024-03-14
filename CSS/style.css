@@ -1,0 +1,84 @@
+
+/*RESET*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*LAYOUT*/
+
+body {
+    font-family: 'Roboto';
+    height: 100vh;
+}
+
+.page-header, .page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /*border: 1px solid black;*/
+}
+
+.wrapper {
+    padding: 35px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    aspect-ratio: 1/1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/*HEADER*/
+
+.logo-title {
+    display: flex;
+    gap: 20px;
+}
+
+.logo {
+    width: 40px;
+}
+
+.button-play {
+    padding: 5px 25px;
+    cursor: pointer;
+    background-color: rgb(255, 242, 61);
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+#difficulty {
+    cursor: pointer;
+}
+
+/*MAIN*/
+
+main {
+    background-color: rgb(144, 255, 255);
+    height: 80%;
+}
+
+.bg-dark {
+    background-color: rgb(113, 113, 237);
+}
