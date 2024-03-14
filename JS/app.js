@@ -14,6 +14,13 @@ che fornisca una scelta tra tre diversi livelli di difficoltà*/
 Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 ATTENZIONE: nell’array delle bombe non potranno esserci due numeri uguali.*/
 
+/*ESERCIZIO:
+La partita termina quando il giocatore clicca su una bomba 
+o quando raggiunge il numero massimo possibile di numeri consentiti 
+(ovvero quando ha rivelato tutte le celle che non sono bombe).
+Al termine della partita il software deve comunicare il punteggio, 
+cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
+
 
 //Recuperare elemento bottone play
 const buttonPlayElement = document.querySelector(".button-play");
@@ -33,8 +40,8 @@ buttonPlayElement.addEventListener("click", function(){
     //console.log(difficulty);
 
     //in event listener,
-    //SE variabile difficoltà = "hard", 
-    if (difficulty === "hard") {
+    //SE variabile difficoltà = "easy", 
+    if (difficulty === "easy") {
         //allora evoco la funzione con 10
         createGrid(10);
     }
@@ -104,8 +111,12 @@ function createGrid(gridSide) {
         //Aggiungere un event listener all'elemento div cella
 
         divCellElement.addEventListener("click", function(){
+            
+            //dichiaro variabile punteggio selezionando tutti elementi con classe bg-dark e trovando la length
+            let gameScore = document.querySelectorAll(".bg-dark").length;
 
-            //in eventlistener del cell element:
+            //recuperare elemento div results
+            const divResultsElement = document.querySelector(".results")
             
             console.log(num);
             //SE num è incluso in array bombe, 
@@ -113,6 +124,9 @@ function createGrid(gridSide) {
 
                 //allora aggiungi classe bg-red,
                 divCellElement.classList.add("bg-red");
+
+                //metto anche in innerHTML della nuova sezione "Hai perso, il tuo punteggio è (variabile punteggio)"
+                divResultsElement.innerHTML = `Hai perso! Il tuo punteggio è ${gameScore}.`
             }
 
             //ALTRIMENTI aggiungo la classe bg-dark
@@ -160,21 +174,6 @@ function getRandomIntInclusive(min, max) {
 
 
 
-
-
-/*ESERCIZIO:
-La partita termina quando il giocatore clicca su una bomba 
-o quando raggiunge il numero massimo possibile di numeri consentiti 
-(ovvero quando ha rivelato tutte le celle che non sono bombe).
-Al termine della partita il software deve comunicare il punteggio, 
-cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.*/
-
-//creare sezione in HTML dove inserire risultato e punteggio
-
-//dichiaro variabile punteggio selezionando tutti elementi con classe bg-dark e trovando la length
-
-//SE num è incluso in array bombe, (oltre a dare classe bg)
-//metto anche in innerHTML della nuova sezione "Hai perso, il tuo punteggio è (variabile punteggio)"
 
 
 
