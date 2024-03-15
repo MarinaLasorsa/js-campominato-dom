@@ -73,8 +73,12 @@ function createGrid(gridSide) {
     const gridElement = document.querySelector(".grid");
     //console.log(gridElement);
 
+    //recuperare elemento div results
+    const divResultsElement = document.querySelector(".results")
+
     //Svuotare la griglia prima di riempirla (in caso di secondo click)
     gridElement.innerHTML = '';
+    divResultsElement.innerHTML = '';
 
     //Dichiarare variabile lato griglia (non più ora che è una funzione)
     //let gridSide = 10;
@@ -86,7 +90,7 @@ function createGrid(gridSide) {
 
     //creare array bombe evocando la funzione con numero celle in ingresso
     let bombsArray = createBombs(cellsNumber)
-    //console.log(bombsArray);
+    console.log(bombsArray);
 
     //Aprire ciclo for che passa il numero delle celle
     for (let i = 0; i < cellsNumber; i++) {
@@ -115,8 +119,6 @@ function createGrid(gridSide) {
             //dichiaro variabile punteggio selezionando tutti elementi con classe bg-dark e trovando la length
             let gameScore = document.querySelectorAll(".bg-dark").length;
 
-            //recuperare elemento div results
-            const divResultsElement = document.querySelector(".results")
             
             console.log(num);
             //SE num è incluso in array bombe, 
@@ -136,12 +138,17 @@ function createGrid(gridSide) {
                 //(toggle per aggiungerlo e toglierlo al click)
                 divCellElement.classList.toggle("bg-dark");
             }
+
+            console.log(gameScore);
+
+            if (gameScore === (cellsNumber - 17)) {
+                divResultsElement.innerHTML = "Congratulazioni! Hai vinto."
+            }
             
         })
     }
 
 }
-
 
 
 //fare funzione per creare array bombe con numero celle in ingresso
@@ -170,6 +177,12 @@ function getRandomIntInclusive(min, max) {
 	const maxFloored = Math.floor(max)
 	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled)
 }
+
+
+/*ESERCIZIO BONUS:
+Quando al partita termina mostrare nella griglia tutte le bombe presenti, 
+anche quelle che non erano state trovate.
+Tutte le caselle delle bombe devono diventare rosse.*/
 
 
 
